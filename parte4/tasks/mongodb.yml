@@ -1,0 +1,22 @@
+---
+- name: MongoDB - Install gnupg
+  shell:
+      cmd: sudo apt-get install gnupg
+
+- name: MongoDB - Import public key
+  shell:
+      cmd: wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -
+
+- name: MongoDB - Create a list file for MongoDB
+  shell:
+      cmd: echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/6.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-6.0.list
+
+- name: MongoDB - Reload local package database
+  shell:
+      cmd: sudo apt-get update
+
+- name: MongoDB - Install the MongoDB server
+  shell:
+      cmd: sudo apt-get install -y mongodb-server
+ 
+...

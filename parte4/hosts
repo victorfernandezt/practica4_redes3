@@ -1,0 +1,4 @@
+[development]
+mydevserver.com
+[servers]
+vagrant@10.0.125.3
